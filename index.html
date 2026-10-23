@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6FBF7">
+  <meta name="description" content="Котик помогает подготовиться к приёму врача и разобраться в рекомендациях.">
+  <title>Котик — помощник в заботе о здоровье</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="Котик — на главную"><img class="brand-cat" src="kotik-cat.png" alt=""><span><b>Котик</b><small>Здоровье — это диалог</small></span></a>
+      <nav class="side-nav" aria-label="Основная навигация">
+        <button class="nav-link active" data-view="home"><span class="nav-icon">⌂</span>Обзор</button>
+        <button class="nav-link" data-view="diary"><span class="nav-icon">◷</span>Дневник наблюдений</button>
+        <button class="nav-link" data-view="prepare"><span class="nav-icon">▤</span>Подготовиться к приёму</button>
+        <button class="nav-link" data-view="explain"><span class="nav-icon">✧</span>Разобрать рекомендации</button>
+        <button class="nav-link" data-view="glossary"><span class="nav-icon">◈</span>Словарь простыми словами</button>
+        <button class="nav-link" data-view="clinics"><span class="nav-icon">⌖</span>Клиники Петропавловска</button>
+        <button class="nav-link" data-view="after"><span class="nav-icon">✓</span>После приёма</button>
+        <button class="nav-link" data-view="notes"><span class="nav-icon">♡</span>Мои заметки <span class="count" id="noteCount">0</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-mini"><span>♧</span><div><b>Личное остаётся личным</b><small>Заметки и дневник — только в этом браузере</small></div></div>
+        <button class="theme-toggle" id="themeToggle"><span>☾</span> Тёмная тема</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
+        <div class="breadcrumb">Котик <span>/</span> <b id="crumb">Обзор</b></div>
+        <div class="top-actions">
+          <span class="save-status"><i></i> Сохранено</span>
+          <button class="icon-button" id="topTheme" aria-label="Сменить тему">☾</button>
+          <div class="avatar">А</div>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="view active" id="home">
+          <div class="welcome-row">
+            <div>
+              <span class="eyebrow">ЗДОРОВЬЕ — ЭТО ДИАЛОГ</span>
+              <h1>Привет!<br><span>Подготовимся к приёму?</span></h1>
+              <p class="lead">Собери важное перед визитом и понятнее прочитай рекомендации врача.</p>
+            </div>
+            <div class="welcome-note">Маленькая подготовка<br>— больше уверенности <span>♡</span></div>
+          </div>
+
+          <div class="home-grid">
+            <div class="primary-column">
+              <div class="action-grid">
+                <button class="action-card lavender" data-view="prepare">
+                  <span class="action-icon">☷</span><span class="arrow">↗</span>
+                  <b>Подготовить вопросы врачу</b>
+                  <small>Собери наблюдения и то, что важно спросить.</small>
+                  <em>Начать подготовку →</em>
+                </button>
+                <button class="action-card mint" data-view="explain">
+                  <span class="action-icon">▤</span><span class="arrow">↗</span>
+                  <b>Понять рекомендации</b>
+                  <small>Найди знакомые термины в словаре и подготовь вопросы.</small>
+                  <em>Разобрать текст →</em>
+                </button>
+                <button class="action-card soft-peach" data-view="glossary">
+                  <span class="action-icon">◈</span><span class="arrow">↗</span>
+                  <b>Найти медицинское слово</b>
+                  <small>Поищи простое объяснение термина в офлайн-справочнике.</small>
+                  <em>Открыть словарь →</em>
+                </button>
+                <button class="action-card soft-mint" data-view="diary">
+                  <span class="action-icon">◷</span><span class="arrow">↗</span>
+                  <b>Записать наблюдение</b>
+                  <small>Фиксируй, что замечаешь и как это влияет на обычный день.</small>
+                  <em>Открыть дневник →</em>
+                </button>
+                <button class="action-card soft-paper" data-view="after">
+                  <span class="action-icon">✓</span><span class="arrow">↗</span>
+                  <b>Сохранить план после приёма</b>
+                  <small>Запиши договорённости, обследования и дату следующего визита.</small>
+                  <em>Записать итог →</em>
+                </button>
+                <button class="action-card clinic-action" data-view="clinics">
+                  <span class="action-icon">⌖</span><span class="arrow">↗</span>
+                  <b>Найти клинику в Петропавловске</b>
+                  <small>Официальные сайты, телефоны и способы записаться на приём.</small>
+                  <em>Открыть каталог →</em>
+                </button>
+              </div>
+
+              <div class="section-heading">
+                <div><span class="eyebrow">ТВОЯ ПАМЯТЬ О ЗДОРОВЬЕ</span><h2>Последние заметки</h2></div>
+                <button class="text-button" data-view="notes">Все заметки ↗</button>
+              </div>
+              <div class="notes-preview" id="homeNotes"></div>
+              <div class="gentle-card">
+                <span class="gentle-icon">✦</span>
+                <div><b>Маленькие записи — яснее разговор</b><p>Дневник поможет вспомнить, когда начались изменения и что ты замечала.</p></div>
+                <button data-view="diary">В дневник</button>
+              </div>
+            </div>
+
+            <aside class="right-column">
+              <div class="cat-panel">
+                <div class="cat-speech">
+                  <span class="eyebrow">КОТИК РЯДОМ</span>
+                  <p id="catGreeting">Я помогу собрать вопросы и сохранить главное. Решения о лечении остаются за врачом.</p>
+                </div>
+                <div class="mascot-wrap" aria-label="Котик-помощник">
+                  <div class="sparkle s1">✦</div><div class="sparkle s2">✧</div>
+                  <div class="mascot" id="mascot" role="button" tabindex="0" aria-label="Погладить котика">
+                    <img src="kotik-cat.png" alt="Пушистый котёнок Котик">
+                  </div>
+                  <span class="cat-caption">ТВОЙ ПОМОЩНИК В ЗАБОТЕ О СЕБЕ</span>
+                </div>
+                <div class="cat-benefits">
+                  <div><span>♡</span>Собирай вопросы</div>
+                  <div><span>▤</span>Сохраняй важное</div>
+                  <div><span>✧</span>Разбирай формулировки</div>
+                </div>
+                <div class="cat-quote">
+                  <span class="cat-quote-mark" aria-hidden="true">“</span>
+                  <div><p>Не нужно разбираться во всём сразу. Начнём с одного вопроса.</p><small>— Котик</small></div>
+                  <span class="cat-quote-heart" aria-hidden="true">♡</span>
+                </div>
+              </div>
+              <div class="safety-card"><span>✓</span><p>Котик не ставит диагнозы и не назначает лечение. Он помогает подготовиться к разговору с врачом.</p></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="prepare">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">ПОДГОТОВКА К ПРИЁМУ</span>
+          <h1>Что важно обсудить?</h1>
+          <p class="lead page-lead">Заполни только то, чем хочешь поделиться. Из ответов соберём удобный список для разговора с врачом.</p>
+          <div class="form-layout">
+            <form id="prepareForm" class="form-card">
+              <label for="concern">Что тебя беспокоит или о чём хочешь поговорить?</label>
+              <textarea id="concern" rows="4" placeholder="Например: последние две недели быстро устаю..."></textarea>
+              <div class="two-fields">
+                <div><label for="since">Когда это началось?</label><input id="since" placeholder="Например: около недели назад"></div>
+                <div><label for="frequency">Как часто это происходит?</label>
+                  <select id="frequency">
+                    <option value="">Выбери, если знаешь</option><option>Почти каждый день</option>
+                    <option>Несколько раз в неделю</option><option>Иногда</option><option>Пока не знаю</option>
+                  </select>
+                </div>
+              </div>
+              <label for="context">Что ещё стоит врачу знать?</label>
+              <textarea id="context" rows="3" placeholder="Что усиливает или облегчает? Какие вопросы хочется задать?"></textarea>
+              <fieldset class="bring-list">
+                <legend>Что подготовить или взять с собой?</legend>
+                <label><input type="checkbox" name="bring" value="Список лекарств, витаминов и добавок"> Список лекарств и добавок</label>
+                <label><input type="checkbox" name="bring" value="Список аллергий и реакций на лекарства"> Известные аллергии или реакции</label>
+                <label><input type="checkbox" name="bring" value="Результаты анализов и обследований"> Результаты анализов или обследований</label>
+                <label><input type="checkbox" name="bring" value="Предыдущие заключения и выписки"> Предыдущие заключения или выписки</label>
+              </fieldset>
+              <label class="include-diary"><input type="checkbox" id="includeDiary" checked> Добавить последние наблюдения из дневника в шпаргалку</label>
+              <p class="form-hint"><span>🐾</span> Можно писать своими словами и пропустить любой пункт.</p>
+              <button class="primary-button" type="submit">Собрать вопросы для врача <span>→</span></button>
+            </form>
+            <aside class="side-hint">
+              <div class="hint-cat">
+  <img src="kotik-mascot-clean.png" alt="Котик рядом, чтобы поддержать тебя"></div>
+              <b>Тебе не нужно ставить себе диагноз</b>
+              <p>Твоя задача — рассказать, что ты замечаешь. Врач поможет разобраться в причинах.</p>
+              <div class="red-flag"><b>Нужна срочная помощь?</b><p>При резком ухудшении состояния или непосредственной опасности обратись в местную экстренную службу или за срочной медицинской помощью.</p></div>
+            </aside>
+          </div>
+          <div class="result-card hidden" id="prepResult"></div>
+        </section>
+
+        <section class="view" id="explain">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">РАЗБОР РЕКОМЕНДАЦИЙ</span>
+          <h1>Найдём знакомые термины</h1>
+          <p class="lead page-lead">Проверь текст по офлайн-справочнику и собери вопросы, которые можно обсудить с врачом. Текст останется в этом браузере.</p>
+          <div class="form-layout">
+            <div class="form-card">
+              <label for="doctorText">Текст рекомендации</label>
+              <textarea id="doctorText" rows="8" maxlength="4000" placeholder="Вставь сюда текст, который дал врач. Удали из него имя, телефон и другие личные данные."></textarea>
+              <div class="text-meta"><span>Только текст · до 4000 символов</span><span id="charCount">0 / 4000</span></div>
+              <div class="local-mode-card">
+                <div><b>Котик работает прямо на устройстве</b><p>Текст не отправляется в облачный сервис. Справочник ограничен и не является ИИ, врачом или средством диагностики.</p></div>
+                <button class="primary-button" id="explainLocal" type="button">Найти термины и вопросы <span>→</span></button>
+              </div>
+            </div>
+            <aside class="side-hint explain-hint">
+              <div class="hint-cat"><img src="kotik-mascot-clean.png" alt="Котик рядом, чтобы поддержать тебя"></div>
+              <b>Проверим, что именно написано</b>
+              <p>Котик поможет найти знакомые слова в справочнике и составить вопросы. Он не расшифровывает анализы, не ставит диагноз, не меняет назначения и не подбирает дозировки.</p>
+              <div class="red-flag"><b>Важно</b><p>Если речь о срочном ухудшении состояния, не жди ответа сайта — обратись за медицинской помощью.</p></div>
+            </aside>
+          </div>
+          <div class="result-card hidden" id="explainResult"></div>
+        </section>
+
+        <section class="view" id="glossary">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">ПОНЯТНЫЕ СЛОВА</span>
+          <h1>Медицинский словарь</h1>
+          <p class="lead page-lead">Найди незнакомый термин и прочитай короткое объяснение. Если значение зависит от контекста, Котик подскажет, что уточнить у специалиста.</p>
+          <div class="glossary-intro">
+            <span class="glossary-intro-icon">✦</span>
+            <div><b>Небольшая база знаний рядом</b><p>Справочник работает без интернета и не отправляет введённые слова. Это объяснения терминов, а не расшифровка диагноза или анализа.</p></div>
+            <strong id="glossaryTotal">0 слов</strong>
+          </div>
+          <div class="glossary-toolbar">
+            <label class="glossary-search" for="glossarySearch"><span>⌕</span><input id="glossarySearch" type="search" placeholder="Например: гемоглобин, МРТ, натощак" autocomplete="off"><small>ПОИСК</small></label>
+            <div class="glossary-filters" role="group" aria-label="Фильтр медицинских терминов">
+              <button class="glossary-filter active" type="button" data-glossary-filter="all" aria-pressed="true">Все</button>
+              <button class="glossary-filter" type="button" data-glossary-filter="exams" aria-pressed="false">Обследования</button>
+              <button class="glossary-filter" type="button" data-glossary-filter="labs" aria-pressed="false">Анализы</button>
+              <button class="glossary-filter" type="button" data-glossary-filter="terms" aria-pressed="false">Термины</button>
+            </div>
+          </div>
+          <p class="glossary-count" id="glossaryCount" aria-live="polite"></p>
+          <div class="glossary-grid" id="glossaryGrid" aria-live="polite"></div>
+          <div class="glossary-footnote"><b>Важно помнить</b><p>Одно слово не объясняет всё заключение. Значение формулировки зависит от соседнего текста, истории и объяснения врача. Не меняй назначения по словарю.</p></div>
+        </section>
+
+        <section class="view" id="clinics">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">МЕДПОМОЩЬ РЯДОМ</span>
+          <h1>Клиники Петропавловска</h1>
+          <p class="lead page-lead">Найди медорганизацию, открой её официальный ресурс или позвони. Запись оформляется на eGov или непосредственно в учреждении — Котик не собирает медицинские данные и не бронирует приём.</p>
+          <div class="clinic-intro">
+            <div class="clinic-intro-icon">⌖</div>
+            <div><b>Как записаться</b><p>Для городских поликлиник доступна услуга eGov. Для консультаций в больницах позвони в регистратуру: там подскажут, нужен ли маршрут или направление.</p></div>
+            <a class="secondary-button" href="https://egov.kz/ru/services/presale/P702" target="_blank" rel="noopener">Запись через eGov ↗</a>
+          </div>
+          <div class="clinic-toolbar">
+            <label class="clinic-search" for="clinicSearch"><span>⌕</span><input id="clinicSearch" type="search" placeholder="Название, адрес или телефон" autocomplete="off"></label>
+            <select id="clinicType" aria-label="Фильтр по типу учреждения">
+              <option value="all">Все организации</option>
+              <option value="polyclinic">Поликлиники</option>
+              <option value="hospital">Больницы</option>
+              <option value="children">Детская помощь</option>
+              <option value="dental">Стоматология</option>
+            </select>
+            <button type="button" class="text-button" id="clinicFavorites">♡ Избранное</button>
+          </div>
+          <div class="clinic-grid" id="clinicGrid" aria-live="polite"></div>
+          <div class="clinic-footnote"><b>Перед визитом</b><p>Контакты и расписание могут меняться. Уточни график на официальном сайте или по телефону. Онлайн-запись может потребовать авторизации на eGov и прикрепления к поликлинике.</p><span>Каталог собран по официальным сайтам медорганизаций и gov.kz.</span></div>
+        </section>
+
+        <section class="view" id="diary">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">ДНЕВНИК НАБЛЮДЕНИЙ</span>
+          <h1>Что ты замечаешь?</h1>
+          <p class="lead page-lead">Короткие записи помогут вспомнить подробности на приёме. Дневник не оценивает симптомы и хранится только в этом браузере.</p>
+          <div class="form-layout diary-layout">
+            <form id="diaryForm" class="form-card">
+              <div class="two-fields diary-fields">
+                <div><label for="diaryDate">Дата наблюдения</label><input id="diaryDate" type="date" required></div>
+                <div><label for="diaryImpact">Как повлияло на день?</label>
+                  <select id="diaryImpact"><option>Почти не повлияло</option><option>Немного мешало</option><option>Сильно мешало обычным делам</option><option>Не уверена</option></select>
+                </div>
+              </div>
+              <label for="diaryObservation">Что ты заметила?</label>
+              <textarea id="diaryObservation" rows="4" maxlength="700" required placeholder="Например: проснулась ночью из-за кашля; днём стало легче..."></textarea>
+              <label for="diaryContext">Что ещё происходило в это время?</label>
+              <textarea id="diaryContext" rows="3" maxlength="500" placeholder="Например: время суток, где ты была и чем занималась."></textarea>
+              <p class="form-hint"><span>✎</span> Запиши только то, что помнишь. Если нечего добавить — оставь поле пустым.</p>
+              <button class="primary-button" type="submit">Сохранить наблюдение <span>→</span></button>
+            </form>
+            <aside class="side-hint">
+              <div class="hint-cat"><img src="kotik-mascot-clean.png" alt="Котик поддерживает тебя"></div>
+              <b>Удобная заметка для врача</b>
+              <p>Полезно указать дату, что именно произошло, как долго длилось и что изменилось после этого.</p>
+              <div class="red-flag"><b>Если стало резко хуже</b><p>Не жди, пока накопятся записи. Обратись за срочной медицинской помощью.</p></div>
+            </aside>
+          </div>
+          <div class="diary-history-heading"><div><span class="eyebrow">СОХРАНЕНО НА ЭТОМ УСТРОЙСТВЕ</span><h2>Мои наблюдения <span id="diaryCount">0</span></h2></div><button class="text-button" id="clearDiary" type="button">Очистить дневник</button></div>
+          <div class="diary-list" id="diaryEntries"></div>
+        </section>
+
+        <section class="view" id="after">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">ПОСЛЕ ПРИЁМА</span>
+          <h1>Сохраним договорённости</h1>
+          <p class="lead page-lead">Запиши план врача своими словами, чтобы вернуться к нему позже. Если пункт непонятен, отметь его для уточнения у специалиста.</p>
+          <div class="form-layout">
+            <form id="afterForm" class="form-card">
+              <label for="afterPlan">Что врач рекомендовал или о чём вы договорились?</label>
+              <textarea id="afterPlan" rows="4" maxlength="1200" required placeholder="Запиши основные пункты плана. Если переписываешь назначение, сохрани формулировку врача без изменений."></textarea>
+              <div class="two-fields">
+                <div><label for="afterTests">Обследования или следующий шаг</label><input id="afterTests" maxlength="300" placeholder="Например: сдать анализ до повторного визита"></div>
+                <div><label for="afterDate">Дата следующего приёма</label><input id="afterDate" type="date"></div>
+              </div>
+              <label for="afterQuestions">Что осталось уточнить?</label>
+              <textarea id="afterQuestions" rows="3" maxlength="500" placeholder="Запиши вопрос, который хочешь задать врачу или фармацевту."></textarea>
+              <p class="form-hint"><span>🔒</span> Не сохраняй здесь чужие персональные данные. Запись останется в этом браузере.</p>
+              <button class="primary-button" type="submit">Сохранить итог приёма <span>→</span></button>
+            </form>
+            <aside class="side-hint explain-hint">
+              <div class="hint-cat"><img src="kotik-mascot-clean.png" alt="Котик рядом"></div>
+              <b>Сохраняй точные формулировки</b>
+              <p>Особенно названия и дозировки лекарств: сверяй их с письменным назначением и уточняй у врача или фармацевта, если есть сомнения.</p>
+              <div class="red-flag"><b>Котик не меняет назначения</b><p>Не прекращай и не меняй лечение на основании этой записи. По вопросам плана обращайся к специалисту.</p></div>
+            </aside>
+          </div>
+          <div class="next-visit-card hidden" id="nextVisitCard"></div>
+        </section>
+
+        <section class="view" id="notes">
+          <button class="back-link" data-view="home">← На главную</button>
+          <span class="eyebrow">ТВОЁ ЛИЧНОЕ ПРОСТРАНСТВО</span>
+          <h1>Мои заметки</h1>
+          <p class="lead page-lead">Здесь сохраняются подготовленные вопросы и твои записи. Данные остаются в этом браузере.</p>
+          <div class="notes-toolbar"><button class="secondary-button" id="exportNotes">Скачать мои заметки ↓</button><button class="delete-button" id="clearNotes">Удалить все заметки</button></div>
+          <div class="all-notes" id="allNotes"></div>
+        </section>
+      </div>
+
+      <nav class="mobile-nav" aria-label="Навигация">
+        <button data-view="home" class="active"><span>⌂</span><small>Обзор</small></button>
+        <button data-view="diary"><span>◷</span><small>Дневник</small></button>
+        <button data-view="prepare"><span>▤</span><small>Приём</small></button>
+        <button data-view="explain"><span>✧</span><small>Разбор</small></button>
+        <button data-view="clinics"><span>⌖</span><small>Клиники</small></button>
+        <button data-view="notes"><span>♡</span><small>Заметки</small></button>
+      </nav>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
